@@ -11,11 +11,11 @@ Each prmission set has it's corresponding Azure Group for each account.
 
 
 
-# Tobii Control Tower Account Enrollment
+# Control Tower Account Enrollment
 
-To enable Tobii's AWS governance using AWS Control Tower, all Tobii accounts need to be enrolled.
-The enrollment is initiated by Tobii IT from Control Tower, but requires the enrolling account to allow
-enrollment. This is done by creating a specific IAM [Role](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html) at can be assumed by the Tobii top management account root.
+To enable AWS governance using AWS Control Tower, all accounts need to be enrolled.
+The enrollment is initiated by IT from Control Tower, but requires the enrolling account to allow
+enrollment. This is done by creating a specific IAM [Role](https://docs.aws.amazon.com/controltower/latest/userguide/enroll-account.html) at can be assumed by the company top management account root.
 
 The unregistered account are found in Tower : Organizational unit: Workloads
 <p></p>
@@ -38,7 +38,7 @@ name those accordingly: aacount1admin account2admin<p></p>
 start to configure you login (SSO)
 <p></p>
 
-Go to https://tobii.awsapps.com/start#/ and get Command line or programmatic access. <p></p>
+Go to https://company.awsapps.com/start#/ and get Command line or programmatic access. <p></p>
 Follow option 2 Paste the following text in your AWS credentials file (typically located in ~/.aws/credentials) ( not aws_session_token! )<p></p>
 
 
@@ -57,7 +57,7 @@ aws configure sso
 name: account1<p></p>
 url:
 ```
-https://tobii.awsapps.com/start
+https://company.awsapps.com/start
 ```
 region: <p></p>
 ```
@@ -118,8 +118,8 @@ The output should look like this on a successful run:
 <h2>Manual execution!</h2>
 
 ```
-aws cloudformation create-stack --stack-name tobii-control-tower-account-enrollment --template-body file://./account-enrollment-role-template.yml --capabilities CAPABILITY_NAMED_IAM --profile itadmin
+aws cloudformation create-stack --stack-name company-control-tower-account-enrollment --template-body file://./account-enrollment-role-template.yml --capabilities CAPABILITY_NAMED_IAM --profile itadmin
 ```
 ```
-aws cloudformation describe-stack-events --stack-name tobii-control-tower-account-enrollment --profile itadmin --output json | jq '.' | grep "CREATE"
+aws cloudformation describe-stack-events --stack-name company-control-tower-account-enrollment --profile itadmin --output json | jq '.' | grep "CREATE"
 ```
