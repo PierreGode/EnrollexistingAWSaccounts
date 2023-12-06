@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  AWSControlTowerExecutionRole:
+    Description: Allow company AWS Control Tower to enroll this account
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: AWSControlTowerExecution
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: 
+                - 123456789
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess   
