@@ -1,4 +1,5 @@
-# Azure SSO setup
+
+AWS TO Azure SSO setup
 Azure SSO groups                                    Permission sets
 
 Each prmission set has it's corresponding Azure Group for each account. 
